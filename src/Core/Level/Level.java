@@ -1,5 +1,7 @@
 package Core.Level;
 import java.awt.Graphics2D;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import Core.Screen;
 import Core.Level.LevelElement.Tile.Tile;
@@ -8,11 +10,17 @@ public class Level extends Screen {
     private int N;
     private int M;
     private Tile tileGrid[][];
+    private NetworkManager network;
 
     public Level(int N, int M, Tile tileGrid[][]) {
         this.N = N;
         this.M = M;
         this.tileGrid = tileGrid;
+        build();
+    }
+
+    private void build() {
+        network = new NetworkManager(N, M, tileGrid);
     }
 
     public void render(Graphics2D g2d) {

@@ -28,4 +28,8 @@ public abstract class Tile extends LevelElement {
     public int getY() {
         return y;
     }
+
+    public Edge getEdge(int i) {
+        return edges[i];
+    }
 }
