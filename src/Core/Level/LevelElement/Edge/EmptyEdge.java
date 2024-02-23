@@ -1,8 +1,8 @@
-package Core.Level.Edge;
+package Core.Level.LevelElement.Edge;
 import java.awt.Graphics2D;
 
-public class Wall extends Edge {
-    public Wall(int x1, int y1, int x2, int y2) {
+public class EmptyEdge extends Edge {
+    public EmptyEdge(int x1, int y1, int x2, int y2) {
         super(x1, y1, x2, y2);
         collidable = false;
         seeThrough = true;

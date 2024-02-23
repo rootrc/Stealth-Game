@@ -2,12 +2,12 @@ package Core.Level;
 import java.awt.Graphics2D;
 
 import Core.Screen;
-import Core.Level.Tile.Tile;
+import Core.Level.LevelElement.Tile.Tile;
 
 public class Level extends Screen {
-    int N;
-    int M;
-    Tile tileGrid[][];
+    private int N;
+    private int M;
+    private Tile tileGrid[][];
 
     public Level(int N, int M, Tile tileGrid[][]) {
         this.N = N;
