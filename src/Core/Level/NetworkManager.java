@@ -20,7 +20,7 @@ public class NetworkManager {
         return dist[x1][y1][x2][y2];
     }
 
-    public int travelDistance(Location location1, Location location2) {
+    public int travelDistance(Point location1, Point location2) {
         return dist[location1.getX()][location1.getY()][location2.getX()][location2.getY()];
     }
 

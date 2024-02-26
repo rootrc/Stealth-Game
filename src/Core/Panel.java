@@ -38,25 +38,25 @@ public class Panel extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
         g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        game.level.render(g2d);
+        game.screen.render(g2d);
     }
 
     class TKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            game.room.player.keyPressed(e);
+            game.screen.keyPressed(e);
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            game.room.player.keyReleased(e);
+            game.screen.keyReleased(e);
         }
     }
 
     class TMouseAdapter extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            // Game.getInstance().room.mouseClicked(e);
+            game.screen.mouseClicked(e);
         }
     }
 }

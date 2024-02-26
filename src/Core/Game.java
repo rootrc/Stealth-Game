@@ -13,12 +13,14 @@ public class Game {
     final static int delay = 20;
     public JFrame frame;
     public Panel panel;
+    public Screen screen;
     public Level level;
 
     private Game() {
         frame = new JFrame();
         panel = new Panel(this);
         level = LevelFactory.createLevel(1);
+        screen = level;
         frame.add(panel);
         frame.pack();
         frame.setTitle("Game");
@@ -30,7 +32,7 @@ public class Game {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Timer timer = new Timer(Game.delay, new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                // room.process();
+                screen.process();
                 panel.repaint();
             }
         });

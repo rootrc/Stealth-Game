@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 import core.level.objects.tiles.*;
 import core.level.objects.edges.*;
+import core.level.objects.entities.Player;
 
 public class LevelFactory {
     private static int N;
@@ -20,7 +21,8 @@ public class LevelFactory {
             N = Integer.parseInt(st.nextToken());
             M = Integer.parseInt(st.nextToken());
             Tile tileGrid[][] = createTileGrid();
-            return new Level(N, M, tileGrid);
+            Player player = createPlayer();
+            return new Level(N, M, tileGrid, player);
         } catch (NumberFormatException | IOException e) {
             e.printStackTrace();
         }
@@ -108,5 +110,17 @@ public class LevelFactory {
             default:
                 return null;
         }
+    }
+
+    private static Player createPlayer() {
+        try {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            return new Player(x, y);
+        } catch (IOException e) {
+
+        }
+        return null;
     }
 }
