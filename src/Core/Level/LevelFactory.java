@@ -1,16 +1,12 @@
-package Core.Level;
+package core.level;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import Core.Level.LevelElement.Edge.Edge;
-import Core.Level.LevelElement.Edge.EmptyEdge;
-import Core.Level.LevelElement.Edge.WallEdge;
-import Core.Level.LevelElement.Tile.EmptyTile;
-import Core.Level.LevelElement.Tile.Tile;
-import Core.Level.LevelElement.Tile.WallTile;
+import core.level.objects.tiles.*;
+import core.level.objects.edges.*;
 
 public class LevelFactory {
     private static int N;

@@ -1,17 +1,20 @@
-package Core.Level.LevelElement.Tile;
+package core.level.objects.tiles;
 import java.awt.Graphics2D;
 
-import Core.Level.LevelElement.LevelElement;
-import Core.Level.LevelElement.Edge.Edge;
+import core.level.Location;
+import core.level.objects.LevelObject;
+import core.level.objects.edges.Edge;
 
-public abstract class Tile extends LevelElement {
+public abstract class Tile extends LevelObject {
     protected int x;
     protected int y;
+    protected Location location;
     protected Edge edges[];
 
     public Tile(int x, int y, Edge[] edges) {
         this.x = x;
         this.y = y;
+        location = new Location(x, y);
         this.edges = edges;
     }
 
@@ -27,6 +30,10 @@ public abstract class Tile extends LevelElement {
 
     public int getY() {
         return y;
+    }
+
+    public Location getLocation() {
+        return location;
     }
 
     public Edge getEdge(int i) {

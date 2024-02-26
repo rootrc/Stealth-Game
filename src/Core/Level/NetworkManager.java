@@ -1,9 +1,9 @@
-package Core.Level;
+package core.level;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import Core.Level.LevelElement.Tile.Tile;
+import core.level.objects.tiles.Tile;
 
 public class NetworkManager {
     private int N;
@@ -14,12 +14,18 @@ public class NetworkManager {
         this.N = N;
         this.M = M;
         build(tileGrid);
-        for (int y = 0; y < M; y++) {
-            for (int x = 0; x < N; x++) {
-                System.out.print(dist[0][0][x][y]);
-            }
-            System.out.println();
-        }
+    }
+
+    public int travelDistance(int x1, int y1, int x2, int y2) {
+        return dist[x1][y1][x2][y2];
+    }
+
+    public int travelDistance(Location location1, Location location2) {
+        return dist[location1.getX()][location1.getY()][location2.getX()][location2.getY()];
+    }
+
+    public int travelDistance(Tile tile1, Tile tile2) {
+        return dist[tile1.getX()][tile1.getY()][tile2.getX()][tile2.getY()];
     }
 
     private void build(Tile tileGrid[][]) {
@@ -54,7 +60,7 @@ public class NetworkManager {
                 if (nextX < 0 || nextY < 0 || nextX >= N || nextY >= M) {
                     continue;
                 }
-                if (!tileGrid[x][y].getEdge(d).getCollidable()) {
+                if (!tileGrid[x][y].getEdge(d).getCollidable() && !tileGrid[nextX][nextY].getCollidable()) {
                     if (dist[nextX][nextY] == -1) {
                         dist[nextX][nextY] = dist[x][y] + 1;
                         qX.add(nextX);

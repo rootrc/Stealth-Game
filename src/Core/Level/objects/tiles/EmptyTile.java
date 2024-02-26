@@ -1,7 +1,7 @@
-package Core.Level.LevelElement.Tile;
+package core.level.objects.tiles;
 import java.awt.Graphics2D;
 
-import Core.Level.LevelElement.Edge.Edge;
+import core.level.objects.edges.Edge;
 
 public class EmptyTile extends Tile {
     public EmptyTile(int x, int y, Edge[] edges) {

@@ -1,7 +1,7 @@
-package Core.Level.LevelElement;
+package core.level.objects;
 import java.awt.Graphics2D;
 
-public abstract class LevelElement {
+public abstract class LevelObject {
     protected boolean collidable;
     protected boolean seeThrough;
 

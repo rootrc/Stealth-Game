@@ -1,10 +1,8 @@
-package Core.Level;
+package core.level;
 import java.awt.Graphics2D;
-import java.util.LinkedList;
-import java.util.Queue;
 
-import Core.Screen;
-import Core.Level.LevelElement.Tile.Tile;
+import core.Screen;
+import core.level.objects.tiles.Tile;
 
 public class Level extends Screen {
     private int N;

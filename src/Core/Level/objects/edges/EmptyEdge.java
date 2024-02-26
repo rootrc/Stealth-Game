@@ -1,4 +1,4 @@
-package Core.Level.LevelElement.Edge;
+package core.level.objects.edges;
 import java.awt.Graphics2D;
 
 public class EmptyEdge extends Edge {

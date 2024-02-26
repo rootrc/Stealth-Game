@@ -1,4 +1,4 @@
-package Core;
+package core;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -44,12 +44,12 @@ public class Panel extends JPanel {
     class TKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            // Game.getInstance().room.keyPressed(e);
+            game.room.player.keyPressed(e);
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            // Game.getInstance().room.keyReleased(e);
+            game.room.player.keyReleased(e);
         }
     }
 
