@@ -2,8 +2,8 @@ package core.level.objects;
 
 public class TileToScreen {
     public final static int tileSize = 32;
-    public final static int adjustX = 64;
-    public final static int adjustY = 32;
+    public final static int adjustX = 0;
+    public final static int adjustY = 0;
 
     public static int xToScreenX(int x) {
         return tileSize * x + adjustX;

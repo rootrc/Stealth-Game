@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.awt.Graphics2D;
 
 import core.Screen;
+import core.level.objects.TileToScreen;
 import core.level.objects.entities.Entity;
 import core.level.objects.entities.Player;
+import core.level.objects.entities.TestEntity;
 import core.level.objects.tiles.Tile;
 
 public class Level extends Screen {
@@ -18,6 +20,7 @@ public class Level extends Screen {
     private Tile tileGrid[][];
     private CollisionDetection collision;
     private NetworkManager network;
+    private AI ai;
 
     public Level(int N, int M, Tile tileGrid[][], Player player) {
         this.N = N;
@@ -25,17 +28,24 @@ public class Level extends Screen {
         this.tileGrid = tileGrid;
         this.player = player;
         entities = new ArrayList<>();
+        entities.add(player);
+        // test
+        entities.add(new TestEntity(7, 4));
         build();
     }
 
     private void build() {
         collision = new CollisionDetection(N, M, tileGrid);
         network = new NetworkManager(N, M, tileGrid);
+        ai = new AI(player, collision, network);
     }
 
     public void render(Graphics2D g2d) {
-        player.draw(g2d);
         drawTiles(g2d);
+        player.draw(g2d);
+        for (Entity entity : entities) {
+            entity.draw(g2d);
+        }
     }
 
     private void drawTiles(Graphics2D g2d) {
@@ -46,15 +56,21 @@ public class Level extends Screen {
         }
     }
 
-    public void process() {
-        player.process();
-        for (int d = 0; d < 4; d++) {
-            if (collision.canMove(player, d)) {
-                player.move(d);
-            }
-        }
-        for (Entity entity : entities) {
+    private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };
 
+    public void process() {
+        for (Entity entity : entities) {
+            if (entity.getClass() != Player.class) {
+                ai.follow(entity, player.getX(), player.getY());
+            }
+            entity.process();
+            for (int d = 0; d < 4; d++) {
+                if (entity.getMovement(d)) {
+                    if (collision.canMove(entity, d)) {
+                        entity.move(d);
+                    }
+                }
+            }
         }
     }
 

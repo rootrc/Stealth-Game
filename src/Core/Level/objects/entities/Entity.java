@@ -20,6 +20,7 @@ public abstract class Entity {
     public Entity(int x, int y, int size, int speed) {
         this.x = x;
         this.y = y;
+        movement = new boolean[4];
         this.size = size;
         this.speed = speed;
         screenX = TileToScreen.xToScreenX(x) + (TileToScreen.tileSize) / 2;
@@ -27,6 +28,7 @@ public abstract class Entity {
     }
 
     public abstract void draw(Graphics2D g2d);
+    public abstract void move(int d);
 
     public void process() {
         x = TileToScreen.screenXToX(screenX);
@@ -53,8 +55,12 @@ public abstract class Entity {
         return location;
     }
 
-    public boolean getMovement(int i) {
-        return movement[i];
+    public boolean getMovement(int d) {
+        return movement[d];
+    }
+
+    public void setMovement(int d, boolean b) {
+        movement[d] = b;
     }
 
     public int getSize() {

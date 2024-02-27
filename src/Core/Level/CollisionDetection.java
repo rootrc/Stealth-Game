@@ -19,31 +19,28 @@ public class CollisionDetection {
 
     private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };
 
-    public boolean canMove(Player player, int d) {
-        if (!player.getMovement(d)) {
-            return false;
-        }
-        int nextX = player.getScreenX() + player.getSpeed() * direct[d][0];
-        int nextY = player.getScreenY() + player.getSpeed() * direct[d][1];
+    public boolean canMove(Entity entity, int d) {
+        int nextX = entity.getScreenX() + entity.getSpeed() * direct[d][0];
+        int nextY = entity.getScreenY() + entity.getSpeed() * direct[d][1];
         for (int i = -1; i <= 1; i++) {
-            if (player.getX() + i < 0 || player.getX() + i >= N) {
+            if (entity.getX() + i < 0 || entity.getX() + i >= N) {
                 continue;
             }
-            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX() + i][player.getY()].getEdge(0))) {
+            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX() + i][entity.getY()].getEdge(0))) {
                 return false;
             }
-            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX() + i][player.getY()].getEdge(2))) {
+            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX() + i][entity.getY()].getEdge(2))) {
                 return false;
             }
         }
         for (int i = -1; i <= 1; i++) {
-            if (player.getY() + i < 0 || player.getY() + i >= M) {
+            if (entity.getY() + i < 0 || entity.getY() + i >= M) {
                 continue;
             }
-            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX()][player.getY() + i].getEdge(1))) {
+            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX()][entity.getY() + i].getEdge(1))) {
                 return false;
             }
-            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX()][player.getY() + i].getEdge(3))) {
+            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX()][entity.getY() + i].getEdge(3))) {
                 return false;
             }
         }
@@ -62,5 +59,13 @@ public class CollisionDetection {
             return true;
         }
         return false;
+    }
+
+    public boolean withinBounds(Entity entity, int d) {
+        if (entity.getX() + direct[d][0] < 0 || entity.getX() + direct[d][0] >= N || entity.getY() + direct[d][1] < 0
+                || entity.getY() + direct[d][1] >= M) {
+            return false;
+        }
+        return true;
     }
 }

@@ -4,12 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import core.level.objects.TileToScreen;
 
 public class Player extends Entity {
     public Player(int x, int y) {
         super(x, y, 16, 4);
-        movement = new boolean[4];
     }
 
     public void draw(Graphics2D g2d) {
