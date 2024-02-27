@@ -27,7 +27,6 @@ public abstract class Entity {
     }
 
     public abstract void draw(Graphics2D g2d);
-    public abstract void move();
 
     public void process() {
         x = TileToScreen.screenXToX(screenX);

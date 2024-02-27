@@ -22,12 +22,10 @@ public class Player extends Entity {
         super.process();
     }
 
-    public void move() {
-        for (int d = 0; d < 4; d++) {
-            if (movement[d]) {
-                screenX += speed * direct[d][0];
-                screenY += speed * direct[d][1];
-            }
+    public void move(int d) {
+        if (movement[d]) {
+            screenX += speed * direct[d][0];
+            screenY += speed * direct[d][1];
         }
     }
 

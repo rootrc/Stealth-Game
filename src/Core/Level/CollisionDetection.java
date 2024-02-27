@@ -19,34 +19,31 @@ public class CollisionDetection {
 
     private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };
 
-    public boolean canMove(Entity entity) {
-        int nextX = entity.getScreenX();
-        int nextY = entity.getScreenY();
-        for (int d = 0; d < 4; d++) {
-            if (entity.getMovement(d)) {
-                nextX += entity.getSpeed() * direct[d][0];
-                nextY += entity.getSpeed() * direct[d][1];
-            }
+    public boolean canMove(Player player, int d) {
+        if (!player.getMovement(d)) {
+            return false;
         }
+        int nextX = player.getScreenX() + player.getSpeed() * direct[d][0];
+        int nextY = player.getScreenY() + player.getSpeed() * direct[d][1];
         for (int i = -1; i <= 1; i++) {
-            if (entity.getX() + i < 0 || entity.getX() + i >= N) {
+            if (player.getX() + i < 0 || player.getX() + i >= N) {
                 continue;
             }
-            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX() + i][entity.getY()].getEdge(0))) {
+            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX() + i][player.getY()].getEdge(0))) {
                 return false;
             }
-            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX() + i][entity.getY()].getEdge(2))) {
+            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX() + i][player.getY()].getEdge(2))) {
                 return false;
             }
         }
         for (int i = -1; i <= 1; i++) {
-            if (entity.getY() + i < 0 || entity.getY() + i >= M) {
+            if (player.getY() + i < 0 || player.getY() + i >= M) {
                 continue;
             }
-            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX()][entity.getY() + i].getEdge(1))) {
+            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX()][player.getY() + i].getEdge(1))) {
                 return false;
             }
-            if (intersects(nextX, nextY, entity.getSize() / 2, tileGrid[entity.getX()][entity.getY() + i].getEdge(3))) {
+            if (intersects(nextX, nextY, player.getSize() / 2, tileGrid[player.getX()][player.getY() + i].getEdge(3))) {
                 return false;
             }
         }

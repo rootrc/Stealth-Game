@@ -25,7 +25,6 @@ public class Level extends Screen {
         this.tileGrid = tileGrid;
         this.player = player;
         entities = new ArrayList<>();
-        entities.add(player);
         build();
     }
 
@@ -49,10 +48,13 @@ public class Level extends Screen {
 
     public void process() {
         player.process();
-        for (Entity entity : entities) {
-            if (collision.canMove(entity)) {
-                entity.move();
+        for (int d = 0; d < 4; d++) {
+            if (collision.canMove(player, d)) {
+                player.move(d);
             }
+        }
+        for (Entity entity : entities) {
+
         }
     }
 
