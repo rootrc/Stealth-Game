@@ -2,13 +2,17 @@ package core.level.objects.entities;
 
 import java.awt.Graphics2D;
 
+import core.level.Level;
 import core.level.Point;
+import core.level.objects.TileToScreen;
 
 public abstract class Entity {
+    protected Level level;
     protected int x;
     protected int y;
     protected int screenX;
     protected int screenY;
+    protected boolean movement[];
     protected Point location;
     protected int size;
     protected int speed;
@@ -18,12 +22,17 @@ public abstract class Entity {
         this.y = y;
         this.size = size;
         this.speed = speed;
-        screenX = TileToScreen.tileSize + (TileToScreen.tileSize - size) / 2;
-        screenY = TileToScreen.tileSize + (TileToScreen.tileSize - size) / 2;
+        screenX = TileToScreen.xToScreenX(x) + (TileToScreen.tileSize) / 2;
+        screenY = TileToScreen.yToScreenY(y) + (TileToScreen.tileSize) / 2;
     }
 
     public abstract void draw(Graphics2D g2d);
-    public abstract void process();
+    public abstract void move();
+
+    public void process() {
+        x = TileToScreen.screenXToX(screenX);
+        y = TileToScreen.screenYToY(screenY);
+    }
 
     public int getX() {
         return x;
@@ -43,5 +52,17 @@ public abstract class Entity {
 
     public Point getLocation() {
         return location;
+    }
+
+    public boolean getMovement(int i) {
+        return movement[i];
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }
