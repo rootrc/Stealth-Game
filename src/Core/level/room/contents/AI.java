@@ -5,8 +5,6 @@ import java.util.Random;
 
 import core.level.room.objects.TileToScreen;
 import core.level.room.objects.entities.Entity;
-import core.level.room.objects.entities.Player;
-import core.level.room.objects.tiles.Tile;
 
 public class AI {
     private CollisionDetection collision;

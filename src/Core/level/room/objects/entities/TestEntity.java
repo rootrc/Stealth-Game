@@ -1,8 +1,7 @@
 package core.level.room.objects.entities;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
-
-import core.level.room.contents.AI;
 
 public class TestEntity extends Enemy {
     public TestEntity(int x, int y) {
@@ -11,6 +10,7 @@ public class TestEntity extends Enemy {
     }
 
     public void draw(Graphics2D g2d) {
+        g2d.setColor(Color.red);
         g2d.fillRect(screenX - size / 2, screenY - size / 2, size, size);
     }
 

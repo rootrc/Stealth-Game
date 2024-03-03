@@ -1,8 +1,7 @@
 package core.level.room.objects.entities;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
 public class Player extends Entity {
     public Player(int x, int y) {
@@ -10,6 +9,7 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2d) {
+        g2d.setColor(Color.lightGray);
         g2d.fillRect(screenX - size / 2, screenY - size / 2, size, size);
     }
 

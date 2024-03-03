@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+import core.level.room.contents.TileGrid;
 import core.level.room.objects.edges.*;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.tiles.*;
@@ -22,7 +23,7 @@ public class RoomFactory {
             M = Integer.parseInt(st.nextToken());
             Tile tileGrid[][] = createTileGrid();
             Player player = createPlayer();
-            return new Room(N, M, tileGrid, player);
+            return new Room(N, M, new TileGrid(N, M, tileGrid), player);
         } catch (NumberFormatException | IOException e) {
             e.printStackTrace();
         }

@@ -6,7 +6,6 @@ import core.level.room.contents.AI;
 import core.level.room.contents.CollisionDetection;
 import core.level.room.contents.GraphManager;
 import core.level.room.objects.entities.Enemy;
-import core.level.room.objects.entities.Player;
 
 public class EnemyManager {
     private Enemy enemy;

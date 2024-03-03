@@ -2,15 +2,15 @@ package core.level.room;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import core.Screen;
 import core.level.room.contents.*;
 import core.level.room.contents.managers.*;
+import core.level.room.objects.TileToScreen;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.entities.TestEntity;
-import core.level.room.objects.tiles.Tile;
 
 public class Room extends Screen {
     private int N;
@@ -21,12 +21,12 @@ public class Room extends Screen {
     private PlayerManager player;
     private EnemiesManager enemies;
 
-    public Room(int N, int M, Tile tileGrid[][], Player player) {
+    public Room(int N, int M, TileGrid tileGrid, Player player) {
         this.N = N;
         this.M = M;
-        this.tileGrid = new TileGrid(N, M, tileGrid);
-        collision = new CollisionDetection(N, M, this.tileGrid);
-        graph = new GraphManager(N, M, this.tileGrid);
+        this.tileGrid = tileGrid;
+        collision = new CollisionDetection(N, M, tileGrid);
+        graph = new GraphManager(N, M, tileGrid);
         this.player = new PlayerManager(player, collision);
         enemies = new EnemiesManager(collision, graph);
         // test
@@ -34,9 +34,26 @@ public class Room extends Screen {
     }
 
     public void render(Graphics2D g2d) {
+        draw(g2d);
         tileGrid.draw(g2d);
         player.draw(g2d);
         enemies.draw(g2d);
+    }
+
+    
+    public void draw(Graphics2D g2d) {
+        g2d.setColor(Color.darkGray);
+        g2d.fillRect(TileToScreen.xToScreenX(0), TileToScreen.yToScreenY(0), TileToScreen.tileSize * N,
+        TileToScreen.tileSize * M);
+        drawFPS(g2d);
+    }
+    
+    private long lastTime;
+    private double fps;
+    
+    private void drawFPS(Graphics2D g2d) {
+        fps = -Math.round(1000000000.0 / (lastTime - (lastTime = System.nanoTime())));
+        g2d.drawString(String.valueOf(fps), 760, 10);
     }
 
     public void process() {
