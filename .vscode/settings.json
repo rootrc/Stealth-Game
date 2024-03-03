@@ -4,5 +4,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-    "explorer.sortOrder": "foldersNestsFiles"
+    "explorer.sortOrder": "foldersNestsFiles",
+    "java.debug.settings.onBuildFailureProceed": true
 }
