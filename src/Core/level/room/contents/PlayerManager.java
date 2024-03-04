@@ -1,9 +1,8 @@
-package core.level.room.contents.managers;
+package core.level.room.contents;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import core.level.room.contents.CollisionDetection;
 import core.level.room.objects.entities.Player;
 
 public class PlayerManager {

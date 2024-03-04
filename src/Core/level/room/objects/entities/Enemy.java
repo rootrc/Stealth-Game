@@ -8,7 +8,6 @@ public abstract class Enemy extends Entity {
     }
 
     public abstract void draw(Graphics2D g2d);
-    public abstract void move(int d);
 
     public void process() {
         super.process();

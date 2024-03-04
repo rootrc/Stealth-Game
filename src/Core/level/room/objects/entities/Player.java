@@ -17,12 +17,4 @@ public class Player extends Entity {
         super.process();
     }
 
-    private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };
-
-    public void move(int d) {
-        if (movement[d]) {
-            screenX += speed * direct[d][0];
-            screenY += speed * direct[d][1];
-        }
-    }
 }

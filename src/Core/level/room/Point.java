@@ -16,4 +16,12 @@ public class Point {
     public int getY() {
         return y;
     }
+
+    public void moveX(int x) {
+        this.x += x;
+    }
+
+    public void moveY(int y) {
+        this.y += y;
+    }
 }

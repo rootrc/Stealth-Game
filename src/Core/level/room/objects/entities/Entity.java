@@ -12,8 +12,8 @@ public abstract class Entity {
     protected int y;
     protected int screenX;
     protected int screenY;
-    protected boolean movement[];
     protected Point location;
+    protected boolean movement[];
     protected int size;
     protected int speed;
 
@@ -25,14 +25,25 @@ public abstract class Entity {
         this.speed = speed;
         screenX = TileToScreen.xToScreenX(x) + (TileToScreen.tileSize) / 2;
         screenY = TileToScreen.yToScreenY(y) + (TileToScreen.tileSize) / 2;
+        location = new Point(screenX, screenY);
     }
 
     public abstract void draw(Graphics2D g2d);
-    public abstract void move(int d);
 
     public void process() {
         x = TileToScreen.screenXToX(screenX);
         y = TileToScreen.screenYToY(screenY);
+    }
+
+    private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };
+    
+    public void move(int d) {
+        if (movement[d]) {
+            screenX += speed * direct[d][0];
+            screenY += speed * direct[d][1];
+            location.moveX(speed * direct[d][0]);
+            location.moveY(speed * direct[d][1]);
+        }
     }
 
     public int getX() {
