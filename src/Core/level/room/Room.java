@@ -31,8 +31,10 @@ public class Room extends Screen {
         this.player = new PlayerManager(player, collision);
         enemies = new EnemiesManager(collision, graph);
         // test
-        enemies.addEnemy(new TestEntity(7, 4));
-        lightManager.addLight(new Light(player.getLocation(), 500));
+        TestEntity entity = new TestEntity(7, 4);
+        enemies.addEnemy(entity);
+        lightManager.addLight(new Light(player.getLocation(), 200, 1.5f));
+        lightManager.addLight(new Light(entity.getLocation(), 100, 1f));
     }
 
     public void render(Graphics2D g2d) {
