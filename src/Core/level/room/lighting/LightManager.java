@@ -1,4 +1,4 @@
-package core.level.room.contents;
+package core.level.room.lighting;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -36,7 +36,7 @@ public class LightManager {
 		// will cause lag
 		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-		g2d.setColor(new Color(0, 0, 0, 200));
+		g2d.setColor(new Color(0, 0, 0, 220));
 		g2d.fillRect(0, 0, width, height);
 		Composite oldComp = g2d.getComposite();
 		g2d.setComposite(AlphaComposite.DstOut);

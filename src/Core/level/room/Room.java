@@ -6,6 +6,9 @@ import java.awt.Graphics2D;
 
 import core.Screen;
 import core.level.room.contents.*;
+import core.level.room.lighting.RadialLight;
+import core.level.room.lighting.FlashLight;
+import core.level.room.lighting.LightManager;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.entities.TestEntity;
 
@@ -31,8 +34,9 @@ public class Room extends Screen {
         // test
         TestEntity entity = new TestEntity(7, 4);
         enemies.addEnemy(entity);
-        lightManager.addLight(new Light(player.getLocation(), 200, 1.5f));
-        lightManager.addLight(new Light(entity.getLocation(), 100, 1f));
+        lightManager.addLight(new RadialLight(player.getLocation(), 100, 1.5f));
+        lightManager.addLight(new RadialLight(entity.getLocation(), 50, 1.5f));
+        lightManager.addLight(new FlashLight(player.getLocation(), 200, 1, 0.5, 2f));
     }
 
     public void render(Graphics2D g2d) {
@@ -41,6 +45,7 @@ public class Room extends Screen {
         player.draw(g2d);
         enemies.draw(g2d);
         lightManager.draw(g2d);
+        g2d.dispose();
     }
 
     private long lastTime;
