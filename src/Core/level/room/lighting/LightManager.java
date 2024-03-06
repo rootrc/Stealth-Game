@@ -23,7 +23,7 @@ public class LightManager {
 	}
 
 	public void draw(Graphics2D g2d) {
-		g2d.drawImage(darknessFilter, 0, 0, null);
+		g2d.drawImage(darknessFilter, TileToScreen.adjustX, TileToScreen.adjustY, null);
 	}
 
 	public void process() {

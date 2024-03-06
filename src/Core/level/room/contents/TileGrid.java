@@ -46,7 +46,7 @@ public class TileGrid {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, 0, 0, null);
+        g2d.drawImage(image, TileToScreen.adjustX, TileToScreen.adjustY, null);
     }
 
     public Tile getTile(int x, int y) {

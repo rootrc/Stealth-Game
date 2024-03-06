@@ -8,8 +8,9 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import core.level.room.Point;
+import core.level.room.objects.TileToScreen;
 
-public class FlashLight extends Light{
+public class FlashLight extends Light {
     private int minX;
     private int minY;
 
@@ -48,6 +49,7 @@ public class FlashLight extends Light{
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, (int) (point.getX() + minX), (int) (point.getY() + minY), null);
+        g2d.drawImage(image, (int) (point.getX() + minX) - TileToScreen.adjustX,
+                (int) (point.getY() + minY) - TileToScreen.adjustY, null);
     }
 }
