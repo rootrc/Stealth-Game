@@ -8,10 +8,18 @@ import core.level.room.Point;
 public abstract class Light {
     protected BufferedImage image;
     protected Point point;
+    protected float luminosity;
 
-    public Light(Point point) {
+    public Light(Point point, float luminosity) {
         this.point = point;
+        this.luminosity = luminosity;
     }
 
     abstract void draw(Graphics2D g2d);
+    abstract void build();
+
+    public void setLuminosity(float luminosity) {
+        this.luminosity = luminosity;
+        build();
+    }
 }

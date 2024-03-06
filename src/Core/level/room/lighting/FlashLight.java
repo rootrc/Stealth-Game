@@ -8,14 +8,27 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import core.level.room.Point;
-import core.level.room.objects.TileToScreen;
 
 public class FlashLight extends Light {
+    private int distance;
+    private double angle;
+    private double beamWidth;
     private int minX;
     private int minY;
 
     public FlashLight(Point point, int distance, double angle, double beamWidth, float luminosity) {
-        super(point);
+        super(point, luminosity);
+        this.distance = distance;
+        this.angle = angle;
+        this.beamWidth = beamWidth;
+        build();
+    }
+
+    public void draw(Graphics2D g2d) {
+        g2d.drawImage(image, (int) (point.getX() + minX), (int) (point.getY() + minY), null);
+    }
+
+    public void build() {
         int x2 = (int) (distance * Math.cos(angle + beamWidth / 2));
         int y2 = (int) (distance * Math.sin(angle + beamWidth / 2));
         int x3 = (int) (distance * Math.cos(angle - beamWidth / 2));
@@ -48,8 +61,18 @@ public class FlashLight extends Light {
         g2d.dispose();
     }
 
-    public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, (int) (point.getX() + minX) - TileToScreen.adjustX,
-                (int) (point.getY() + minY) - TileToScreen.adjustY, null);
+    public void setDistance(int distance) {
+        this.distance = distance;
+        build();
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
+        build();
+    }
+
+    public void setBeamWidth(double beamWidth) {
+        this.beamWidth = beamWidth;
+        build();
     }
 }

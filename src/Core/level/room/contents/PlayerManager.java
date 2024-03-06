@@ -20,8 +20,10 @@ public class PlayerManager {
 
     public void process() {
         player.process();
+        int cnt = 0;
         for (int d = 0; d < 4; d++) {
             if (player.getMovement(d)) {
+                cnt++;
                 if (collision.canMove(player, d)) {
                     player.move(d);
                 }

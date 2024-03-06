@@ -10,9 +10,21 @@ import core.level.room.Point;
 import core.level.room.objects.TileToScreen;
 
 public class RadialLight extends Light {
+    private int radius;
 
     public RadialLight(Point point, int radius, float luminosity) {
-        super(point);
+        super(point, luminosity);
+        this.radius = radius;
+        build();
+    }
+
+    public void draw(Graphics2D g2d) {
+        g2d.drawImage(image, point.getX() - image.getWidth() / 2 - TileToScreen.adjustX,
+                point.getY() - image.getHeight() / 2 - TileToScreen.adjustY, image.getWidth(), image.getHeight(),
+                null);
+    }
+
+    public void build() {
         image = new BufferedImage(radius * 2, radius * 2, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) image.getGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -29,12 +41,11 @@ public class RadialLight extends Light {
             g2d.setColor(new Color(0, 0, 0, alpha));
             g2d.drawOval(radius - i, radius - i, 2 * i, 2 * i);
         }
+        g2d.dispose();
     }
 
-    public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, point.getX() - image.getWidth() / 2 - TileToScreen.adjustX,
-                point.getY() - image.getHeight() / 2 - TileToScreen.adjustY, image.getWidth(), image.getHeight(),
-                null);
+    public void setRadius(int radius) {
+        this.radius = radius;
+        build();
     }
-
 }

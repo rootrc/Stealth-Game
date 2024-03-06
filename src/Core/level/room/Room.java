@@ -36,7 +36,8 @@ public class Room extends Screen {
         enemies.addEnemy(entity);
         lightManager.addLight(new RadialLight(player.getLocation(), 100, 1.5f));
         lightManager.addLight(new RadialLight(entity.getLocation(), 50, 1.5f));
-        lightManager.addLight(new FlashLight(player.getLocation(), 200, 1, 0.5, 2f));
+        FlashLight flashLight = new FlashLight(player.getLocation(), 200, 1, 0.5, 2f);
+        lightManager.addLight(flashLight);
     }
 
     public void render(Graphics2D g2d) {
