@@ -26,18 +26,18 @@ public class Room extends Screen {
         this.N = N;
         this.M = M;
         this.tileGrid = tileGrid;
-        lightManager = new LightManager(N, M);
+        lightManager = new LightManager(N, M, tileGrid);
         collision = new CollisionDetection(N, M, tileGrid);
         graph = new GraphManager(N, M, tileGrid);
         this.player = new PlayerManager(player, collision);
         enemies = new EnemiesManager(collision, graph);
         // test
-        TestEntity entity = new TestEntity(7, 4);
-        enemies.addEnemy(entity);
-        lightManager.addLight(new RadialLight(player.getLocation(), 100, 1.5f));
-        lightManager.addLight(new RadialLight(entity.getLocation(), 50, 1.5f));
-        FlashLight flashLight = new FlashLight(player.getLocation(), 200, 1, 0.5, 2f);
-        lightManager.addLight(flashLight);
+        // TestEntity entity = new TestEntity(7, 4);
+        // enemies.addEnemy(entity);
+        lightManager.addLight(new RadialLight(player.getLocation(), 200, 3f));
+        // lightManager.addLight(new RadialLight(entity.getLocation(), 50, 1.5f));
+        // FlashLight flashLight = new FlashLight(player.getLocation(), 200, 1, 0.5, 2f);
+        // lightManager.addLight(flashLight);
     }
 
     public void render(Graphics2D g2d) {

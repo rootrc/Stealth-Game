@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import core.level.room.objects.TileToScreen;
+import core.level.room.objects.edges.Edge;
 import core.level.room.objects.tiles.Tile;
 
 public class TileGrid {
@@ -14,6 +16,7 @@ public class TileGrid {
     private int width;
     private int height;
     private Tile tileGrid[][];
+    private ArrayList<Edge> edges;
     private BufferedImage image;
 
     public TileGrid(int N, int M, Tile tileGrid[][]) {
@@ -22,6 +25,7 @@ public class TileGrid {
         this.tileGrid = tileGrid;
         width = TileToScreen.tileSize * N + 1;
         height = TileToScreen.tileSize * M + 1;
+        edges = new ArrayList<>();
         build();
     }
 
@@ -43,6 +47,24 @@ public class TileGrid {
             }
         }
         g2d.dispose();
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < M; y++) {
+                if (x == 0 || y == 0) {
+                    if (getTile(x, y).getEdge(0).getCollidable()) {
+                        edges.add(getTile(x, y).getEdge(0));
+                    }
+                    if (getTile(x, y).getEdge(3).getCollidable()) {
+                        edges.add(getTile(x, y).getEdge(3));
+                    }
+                }
+                if (getTile(x, y).getEdge(1).getCollidable()) {
+                    edges.add(getTile(x, y).getEdge(1));
+                }
+                if (getTile(x, y).getEdge(2).getCollidable()) {
+                    edges.add(getTile(x, y).getEdge(2));
+                }
+            }
+        }
     }
 
     public void draw(Graphics2D g2d) {
@@ -51,5 +73,9 @@ public class TileGrid {
 
     public Tile getTile(int x, int y) {
         return tileGrid[x][y];
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
 }

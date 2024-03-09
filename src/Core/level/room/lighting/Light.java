@@ -16,10 +16,24 @@ public abstract class Light {
     }
 
     abstract void draw(Graphics2D g2d);
+
     abstract void build();
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public int getX() {
+        return point.getX();
+    }
+
+    public int getY() {
+        return point.getY();
+    }
 
     public void setLuminosity(float luminosity) {
         this.luminosity = luminosity;
         build();
+
     }
 }
