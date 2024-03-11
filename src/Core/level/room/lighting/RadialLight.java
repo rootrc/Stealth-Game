@@ -19,8 +19,8 @@ public class RadialLight extends Light {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, point.getX() - image.getWidth() / 2 - TileToScreen.adjustX,
-                point.getY() - image.getHeight() / 2 - TileToScreen.adjustY, image.getWidth(), image.getHeight(),
+        g2d.drawImage(image, (int) point.getX() - image.getWidth() / 2 - TileToScreen.adjustX,
+                (int) point.getY() - image.getHeight() / 2 - TileToScreen.adjustY, image.getWidth(), image.getHeight(),
                 null);
     }
 

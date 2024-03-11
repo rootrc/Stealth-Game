@@ -23,9 +23,9 @@ public class GraphManager {
         return dist[x1][y1][x2][y2];
     }
 
-    public int travelDistance(Point location1, Point location2) {
-        return dist[location1.getX()][location1.getY()][location2.getX()][location2.getY()];
-    }
+    // public int travelDistance(Point location1, Point location2) {
+    //     return dist[location1.getX()][location1.getY()][location2.getX()][location2.getY()];
+    // }
 
     public int travelDistance(Tile tile1, Tile tile2) {
         return dist[tile1.getX()][tile1.getY()][tile2.getX()][tile2.getY()];

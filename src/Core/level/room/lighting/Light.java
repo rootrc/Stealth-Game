@@ -23,11 +23,11 @@ public abstract class Light {
         return point;
     }
 
-    public int getX() {
+    public double getX() {
         return point.getX();
     }
 
-    public int getY() {
+    public double getY() {
         return point.getY();
     }
 
