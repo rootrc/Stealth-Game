@@ -15,9 +15,9 @@ public abstract class Light {
         this.luminosity = luminosity;
     }
 
-    abstract void draw(Graphics2D g2d);
+    public abstract void draw(Graphics2D g2d);
 
-    abstract void build();
+    protected abstract void build();
 
     public Point getPoint() {
         return point;

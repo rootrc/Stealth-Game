@@ -1,7 +1,9 @@
-package core.level.room.contents;
+package core.level.room.managers;
 
 import java.awt.Graphics2D;
 
+import core.level.room.contents.AI;
+import core.level.room.contents.CollisionDetection;
 import core.level.room.objects.entities.Enemy;
 
 public class EnemyManager {

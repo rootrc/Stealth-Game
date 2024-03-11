@@ -1,8 +1,7 @@
-package core.level.room.objects.edges;
+package core.level.room.objects;
 import java.awt.Graphics2D;
 
 import core.level.room.Point;
-import core.level.room.objects.LevelObject;
 
 public abstract class Edge extends LevelObject {
     protected int x1, y1;

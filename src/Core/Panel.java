@@ -32,6 +32,12 @@ public class Panel extends JPanel {
 
     void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+        setHints(g2d);
+
+        game.screen.render(g2d);
+    }
+
+    public static void setHints(Graphics2D g2d) {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
         g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
@@ -40,8 +46,6 @@ public class Panel extends JPanel {
         // will cause extreme lag
         // g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         // g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-
-        game.screen.render(g2d);
     }
 
     class TKeyAdapter extends KeyAdapter {

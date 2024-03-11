@@ -3,8 +3,9 @@ package core.level.room.contents;
 import java.util.ArrayList;
 import java.util.Random;
 
+import core.level.room.managers.GraphManager;
+import core.level.room.objects.Entity;
 import core.level.room.objects.TileToScreen;
-import core.level.room.objects.entities.Entity;
 
 public class AI {
     private CollisionDetection collision;
@@ -48,16 +49,16 @@ public class AI {
             entity.setMovement(targetDirects.get(new Random().nextInt(targetDirects.size())), true);
         }
         if (entity.getMovement(1) == false && entity.getMovement(3) == false) {
-            if (entity.getScreenX() < TileToScreen.xToScreenX(entity.getX()) + TileToScreen.tileSize / 2) {
+            if (entity.getScreenX() < TileToScreen.toScreen(entity.getX()) + TileToScreen.tileRadius) {
                 entity.setMovement(1, true);
-            } else if (entity.getScreenX() > TileToScreen.xToScreenX(entity.getX()) + TileToScreen.tileSize / 2) {
+            } else if (entity.getScreenX() > TileToScreen.toScreen(entity.getX()) + TileToScreen.tileRadius) {
                 entity.setMovement(3, true);
             }
         }
         if (entity.getMovement(0) == false && entity.getMovement(2) == false) {
-            if (entity.getScreenY() < TileToScreen.yToScreenY(entity.getY()) + TileToScreen.tileSize / 2) {
+            if (entity.getScreenY() < TileToScreen.toScreen(entity.getY()) + TileToScreen.tileRadius) {
                 entity.setMovement(2, true);
-            } else if (entity.getScreenY() > TileToScreen.yToScreenY(entity.getY()) + TileToScreen.tileSize / 2) {
+            } else if (entity.getScreenY() > TileToScreen.toScreen(entity.getY()) + TileToScreen.tileRadius) {
                 entity.setMovement(0, true);
             }
         }

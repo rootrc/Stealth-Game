@@ -1,13 +1,14 @@
-package core.level.room.lighting;
+package core.level.room.lighting.lights;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import core.Panel;
 import core.level.room.Point;
+import core.level.room.lighting.Light;
 
 public class FlashLight extends Light {
     private int distance;
@@ -39,13 +40,7 @@ public class FlashLight extends Light {
         int maxY = Math.max(0, Math.max(y2, y3));
         image = new BufferedImage(maxX - minX, maxY - minY, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) image.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        // will cause lag
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        Panel.setHints(g2d);
         g2d.setStroke(new BasicStroke(2));
         for (int i = 0; i < distance; i += 2) {
             double luma = 1.0D - Math.pow((i + 0.001) / distance, 0.01);

@@ -1,9 +1,7 @@
-package core.level.room.objects.tiles;
+package core.level.room.objects;
 import java.awt.Graphics2D;
 
 import core.level.room.Point;
-import core.level.room.objects.LevelObject;
-import core.level.room.objects.edges.Edge;
 
 public abstract class Tile extends LevelObject {
     protected int x;

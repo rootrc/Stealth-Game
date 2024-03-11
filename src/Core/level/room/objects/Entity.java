@@ -1,10 +1,9 @@
-package core.level.room.objects.entities;
+package core.level.room.objects;
 
 import java.awt.Graphics2D;
 
 import core.level.room.Point;
 import core.level.room.Room;
-import core.level.room.objects.TileToScreen;
 
 public abstract class Entity {
     protected Room level;
@@ -23,16 +22,16 @@ public abstract class Entity {
         movement = new boolean[4];
         this.size = size;
         this.speed = speed;
-        screenX = TileToScreen.xToScreenX(x) + (TileToScreen.tileSize) / 2;
-        screenY = TileToScreen.yToScreenY(y) + (TileToScreen.tileSize) / 2;
+        screenX = TileToScreen.toScreen(x) + (TileToScreen.tileSize) / 2;
+        screenY = TileToScreen.toScreen(y) + (TileToScreen.tileSize) / 2;
         location = new Point(screenX, screenY);
     }
 
     public abstract void draw(Graphics2D g2d);
 
     public void process() {
-        x = TileToScreen.screenXToX(screenX);
-        y = TileToScreen.screenYToY(screenY);
+        x = screenX / TileToScreen.tileSize;
+        y = screenY / TileToScreen.tileSize;
     }
 
     private final int direct[][] = { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 } };

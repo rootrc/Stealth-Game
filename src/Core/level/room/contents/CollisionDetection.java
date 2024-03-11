@@ -1,8 +1,8 @@
 package core.level.room.contents;
 
+import core.level.room.objects.Edge;
+import core.level.room.objects.Entity;
 import core.level.room.objects.TileToScreen;
-import core.level.room.objects.edges.Edge;
-import core.level.room.objects.entities.Entity;
 
 public class CollisionDetection {
     private int N;
@@ -49,10 +49,10 @@ public class CollisionDetection {
         if (!edge.getCollidable()) {
             return false;
         }
-        int xMin = TileToScreen.xToScreenX(Math.min(edge.getX1(), edge.getX2()));
-        int xMax = TileToScreen.xToScreenX(Math.max(edge.getX1(), edge.getX2()));
-        int yMin = TileToScreen.yToScreenY(Math.min(edge.getY1(), edge.getY2()));
-        int yMax = TileToScreen.yToScreenY(Math.max(edge.getY1(), edge.getY2()));
+        int xMin = TileToScreen.toScreen(Math.min(edge.getX1(), edge.getX2()));
+        int xMax = TileToScreen.toScreen(Math.max(edge.getX1(), edge.getX2()));
+        int yMin = TileToScreen.toScreen(Math.min(edge.getY1(), edge.getY2()));
+        int yMax = TileToScreen.toScreen(Math.max(edge.getY1(), edge.getY2()));
         if (x - radius < xMax && xMin < x + radius && y - radius < yMax && yMin < y + radius) {
             return true;
         }

@@ -1,8 +1,9 @@
-package core.level.room.contents;
+package core.level.room.managers;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+import core.level.room.contents.CollisionDetection;
 import core.level.room.objects.entities.Player;
 
 public class PlayerManager {
@@ -20,10 +21,8 @@ public class PlayerManager {
 
     public void process() {
         player.process();
-        int cnt = 0;
         for (int d = 0; d < 4; d++) {
             if (player.getMovement(d)) {
-                cnt++;
                 if (collision.canMove(player, d)) {
                     player.move(d);
                 }

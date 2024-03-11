@@ -3,6 +3,8 @@ package core.level.room.objects.entities;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import core.level.room.objects.Entity;
+
 public class Player extends Entity {
     public Player(int x, int y) {
         super(x, y, 16, 4);

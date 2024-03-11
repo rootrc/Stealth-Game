@@ -2,6 +2,7 @@ package core.level.room.objects.edges;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import core.level.room.objects.Edge;
 import core.level.room.objects.TileToScreen;
 
 public class WallEdge extends Edge {
@@ -13,6 +14,6 @@ public class WallEdge extends Edge {
 
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.black);
-        g2d.drawLine(TileToScreen.tileSize * x1, TileToScreen.tileSize * y1, TileToScreen.tileSize * x2, TileToScreen.tileSize *  y2);
+        g2d.drawLine(TileToScreen.toScreen(x1), TileToScreen.toScreen(y1), TileToScreen.toScreen(x2), TileToScreen.toScreen(y2));
     }
 }

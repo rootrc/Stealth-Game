@@ -2,19 +2,25 @@ package core.level.room;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 
+import core.Panel;
 import core.Screen;
 import core.level.room.contents.*;
-import core.level.room.lighting.RadialLight;
-import core.level.room.lighting.FlashLight;
-import core.level.room.lighting.LightManager;
+import core.level.room.lighting.lights.FlashLight;
+import core.level.room.lighting.lights.RadialLight;
+import core.level.room.managers.EnemiesManager;
+import core.level.room.managers.GraphManager;
+import core.level.room.managers.LightManager;
+import core.level.room.managers.PlayerManager;
+import core.level.room.objects.TileToScreen;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.entities.TestEntity;
 
 public class Room extends Screen {
-    private int N;
-    private int M;
+    private int width;
+    private int height;
     private TileGrid tileGrid;
     private LightManager lightManager;
     private CollisionDetection collision;
@@ -23,8 +29,8 @@ public class Room extends Screen {
     private EnemiesManager enemies;
 
     public Room(int N, int M, TileGrid tileGrid, Player player) {
-        this.N = N;
-        this.M = M;
+        width = TileToScreen.toScreen(N) + 1;
+        height = TileToScreen.toScreen(M) + 1;
         this.tileGrid = tileGrid;
         lightManager = new LightManager(N, M, tileGrid);
         collision = new CollisionDetection(N, M, tileGrid);
@@ -42,10 +48,14 @@ public class Room extends Screen {
 
     public void render(Graphics2D g2d) {
         drawFPS(g2d);
-        tileGrid.draw(g2d);
-        player.draw(g2d);
-        enemies.draw(g2d);
-        lightManager.draw(g2d);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = image.createGraphics();
+        Panel.setHints(g);
+        tileGrid.draw(g);
+        player.draw(g);
+        enemies.draw(g);
+        lightManager.draw(g);
+        g2d.drawImage(image, TileToScreen.adjustX, TileToScreen.adjustY, null);
         g2d.dispose();
     }
 

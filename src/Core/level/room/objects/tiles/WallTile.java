@@ -1,7 +1,8 @@
 package core.level.room.objects.tiles;
 import java.awt.Graphics2D;
 
-import core.level.room.objects.edges.Edge;
+import core.level.room.objects.Edge;
+import core.level.room.objects.Tile;
 
 public class WallTile extends Tile {
     public WallTile(int x, int y, Edge[] edges) {

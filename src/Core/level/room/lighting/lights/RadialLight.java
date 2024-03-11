@@ -1,13 +1,13 @@
-package core.level.room.lighting;
+package core.level.room.lighting.lights;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import core.Panel;
 import core.level.room.Point;
-import core.level.room.objects.TileToScreen;
+import core.level.room.lighting.Light;
 
 public class RadialLight extends Light {
     private int radius;
@@ -19,21 +19,15 @@ public class RadialLight extends Light {
     }
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(image, (int) point.getX() - image.getWidth() / 2 - TileToScreen.adjustX,
-                (int) point.getY() - image.getHeight() / 2 - TileToScreen.adjustY, image.getWidth(), image.getHeight(),
+        g2d.drawImage(image, (int) point.getX() - image.getWidth() / 2,
+                (int) point.getY() - image.getHeight() / 2, image.getWidth(), image.getHeight(),
                 null);
     }
 
     public void build() {
         image = new BufferedImage(radius * 2, radius * 2, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) image.getGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        // will cause lag
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        Panel.setHints(g2d);
         g2d.setStroke(new BasicStroke(2));
         for (int i = 0; i < radius; i++) {
             double luma = 1.0D - Math.pow((i + 0.001) / radius, 0.1);

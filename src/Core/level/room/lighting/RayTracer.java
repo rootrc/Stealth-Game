@@ -7,8 +7,8 @@ import java.util.Comparator;
 
 import core.level.room.Point;
 import core.level.room.contents.TileGrid;
+import core.level.room.objects.Edge;
 import core.level.room.objects.TileToScreen;
-import core.level.room.objects.edges.Edge;
 
 public class RayTracer {
     private TileGrid tileGrid;
@@ -37,10 +37,10 @@ public class RayTracer {
     private void generatePoints() {
         for (Edge edge : tileGrid.getEdges()) {
             for (double[] p : adjust) {
-                rayTrace(light.getX(), TileToScreen.tileSize * edge.getX1() - light.getX() + p[0], light.getY(),
-                        TileToScreen.tileSize * edge.getY1() - light.getY() + p[1]);
-                rayTrace(light.getX(), TileToScreen.tileSize * edge.getX2() - light.getX() + p[0], light.getY(),
-                        TileToScreen.tileSize * edge.getY2() - light.getY() + p[1]);
+                rayTrace(light.getX(), TileToScreen.toScreen(edge.getX1()) - light.getX() + p[0], light.getY(),
+                        TileToScreen.toScreen(edge.getY1()) - light.getY() + p[1]);
+                rayTrace(light.getX(), TileToScreen.toScreen(edge.getX2()) - light.getX() + p[0], light.getY(),
+                        TileToScreen.toScreen(edge.getY2()) - light.getY() + p[1]);
             }
         }
     }
