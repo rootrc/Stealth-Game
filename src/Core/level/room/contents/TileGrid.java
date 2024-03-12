@@ -6,9 +6,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import core.Panel;
-import core.level.room.objects.Edge;
-import core.level.room.objects.Tile;
 import core.level.room.objects.TileToScreen;
+import core.level.room.objects.edges.Edge;
+import core.level.room.objects.tiles.Tile;
 
 public class TileGrid {
     private int N;

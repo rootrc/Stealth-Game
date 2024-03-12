@@ -1,4 +1,4 @@
-package core.level.room.lighting.lights;
+package core.level.room.contents.lighting;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 
 import core.Panel;
 import core.level.room.Point;
-import core.level.room.lighting.Light;
 
 public class RadialLight extends Light {
     private int radius;

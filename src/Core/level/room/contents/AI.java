@@ -3,15 +3,14 @@ package core.level.room.contents;
 import java.util.ArrayList;
 import java.util.Random;
 
-import core.level.room.managers.GraphManager;
 import core.level.room.objects.Entity;
 import core.level.room.objects.TileToScreen;
 
 public class AI {
     private CollisionDetection collision;
-    private GraphManager graph;
+    private Graph graph;
 
-    public AI(CollisionDetection collison, GraphManager graph) {
+    public AI(CollisionDetection collison, Graph graph) {
         this.collision = collison;
         this.graph = graph;
     }

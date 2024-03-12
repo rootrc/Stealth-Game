@@ -1,8 +1,8 @@
 package core.level.room.contents;
 
-import core.level.room.objects.Edge;
 import core.level.room.objects.Entity;
 import core.level.room.objects.TileToScreen;
+import core.level.room.objects.edges.Edge;
 
 public class CollisionDetection {
     private int N;

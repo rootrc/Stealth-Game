@@ -1,4 +1,4 @@
-package core.level.room.managers;
+package core.level.room.contents.lighting;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -9,18 +9,16 @@ import java.util.ArrayList;
 
 import core.Panel;
 import core.level.room.contents.TileGrid;
-import core.level.room.lighting.Light;
-import core.level.room.lighting.RayTracer;
 import core.level.room.objects.TileToScreen;
 
-public class LightManager {
+public class LightingEngine {
 	private int width;
 	private int height;
 	private BufferedImage darknessFilter;
 	private ArrayList<Light> lights;
 	private RayTracer rayTracer;
 
-	public LightManager(int N, int M, TileGrid tileGrid) {
+	public LightingEngine(int N, int M, TileGrid tileGrid) {
 		width = TileToScreen.toScreen(N);
 		height = TileToScreen.toScreen(M);
 		lights = new ArrayList<>();

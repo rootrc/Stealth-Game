@@ -1,4 +1,4 @@
-package core.level.room.lighting;
+package core.level.room.contents.lighting;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
@@ -7,10 +7,10 @@ import java.util.Comparator;
 
 import core.level.room.Point;
 import core.level.room.contents.TileGrid;
-import core.level.room.objects.Edge;
 import core.level.room.objects.TileToScreen;
+import core.level.room.objects.edges.Edge;
 
-public class RayTracer {
+class RayTracer {
     private TileGrid tileGrid;
     private Light light;
     private ArrayList<Point> rayTracingPoints;

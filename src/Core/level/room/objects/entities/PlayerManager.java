@@ -1,18 +1,19 @@
-package core.level.room.managers;
+package core.level.room.objects.entities;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import core.level.room.contents.CollisionDetection;
-import core.level.room.objects.entities.Player;
+import core.level.room.contents.ContentsManager;
+import core.level.room.contents.lighting.RadialLight;
 
 public class PlayerManager {
     private Player player;
-    private CollisionDetection collision;
+    private ContentsManager contentsManager;
 
-    public PlayerManager(Player player, CollisionDetection collision) {
+    public PlayerManager(Player player, ContentsManager contentsManager) {
         this.player = player;
-        this.collision = collision;
+        this.contentsManager = contentsManager;
+        contentsManager.lightingEngine().addLight(new RadialLight(player.getLocation(), 200, 3f));
     }
 
     public void draw(Graphics2D g2d) {
@@ -23,7 +24,7 @@ public class PlayerManager {
         player.process();
         for (int d = 0; d < 4; d++) {
             if (player.getMovement(d)) {
-                if (collision.canMove(player, d)) {
+                if (contentsManager.collision().canMove(player, d)) {
                     player.move(d);
                 }
             }

@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import core.level.room.contents.TileGrid;
-import core.level.room.objects.Edge;
-import core.level.room.objects.Tile;
 import core.level.room.objects.edges.*;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.tiles.*;

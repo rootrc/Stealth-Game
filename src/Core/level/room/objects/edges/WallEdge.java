@@ -2,7 +2,6 @@ package core.level.room.objects.edges;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import core.level.room.objects.Edge;
 import core.level.room.objects.TileToScreen;
 
 public class WallEdge extends Edge {

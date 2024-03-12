@@ -1,4 +1,4 @@
-package core.level.room.lighting;
+package core.level.room.contents.lighting;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

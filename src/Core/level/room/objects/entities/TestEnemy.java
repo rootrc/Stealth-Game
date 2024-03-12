@@ -3,8 +3,8 @@ package core.level.room.objects.entities;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-public class TestEntity extends Enemy {
-    public TestEntity(int x, int y) {
+public class TestEnemy extends Enemy {
+    public TestEnemy(int x, int y) {
         super(x, y, 16, 4);
     }
 

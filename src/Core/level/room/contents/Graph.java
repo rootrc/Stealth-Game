@@ -1,18 +1,17 @@
-package core.level.room.managers;
+package core.level.room.contents;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import core.level.room.contents.TileGrid;
-import core.level.room.objects.Tile;
+import core.level.room.objects.tiles.Tile;
 
-public class GraphManager {
+public class Graph {
     private int N;
     private int M;
     private TileGrid tileGrid;
     private int dist[][][][];
 
-    public GraphManager(int N, int M, TileGrid tileGrid) {
+    public Graph(int N, int M, TileGrid tileGrid) {
         this.N = N;
         this.M = M;
         this.tileGrid = tileGrid;
