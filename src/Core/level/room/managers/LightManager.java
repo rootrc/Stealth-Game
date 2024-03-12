@@ -35,7 +35,7 @@ public class LightManager {
 		darknessFilter = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = darknessFilter.createGraphics();
 		Panel.setHints(g2d);
-		g2d.setColor(new Color(0, 0, 0, 220));
+		g2d.setColor(Color.black);
 		g2d.fillRect(0, 0, width, height);
 		Composite oldComp = g2d.getComposite();
 		g2d.setComposite(AlphaComposite.DstOut);

@@ -18,7 +18,7 @@ import core.level.room.objects.TileToScreen;
 import core.level.room.objects.entities.Player;
 import core.level.room.objects.entities.TestEntity;
 
-public class Room extends Screen {
+public class Room {
     private int width;
     private int height;
     private TileGrid tileGrid;
@@ -46,16 +46,16 @@ public class Room extends Screen {
         // lightManager.addLight(flashLight);
     }
 
-    public void render(Graphics2D g2d) {
+    public void draw(Graphics2D g2d) {
         drawFPS(g2d);
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = image.createGraphics();
         Panel.setHints(g);
         tileGrid.draw(g);
         player.draw(g);
         enemies.draw(g);
         lightManager.draw(g);
-        g2d.drawImage(image, TileToScreen.adjustX, TileToScreen.adjustY, null);
+        g2d.drawImage(image, 400 - player.getX(), 400 - player.getY(), null);
         g2d.dispose();
     }
 
@@ -79,10 +79,6 @@ public class Room extends Screen {
 
     public void keyReleased(KeyEvent e) {
         player.keyReleased(e);
-    }
-
-    public void mouseClicked(MouseEvent e) {
-
     }
 
 }

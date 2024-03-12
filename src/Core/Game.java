@@ -6,21 +6,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import core.level.room.Room;
-import core.level.room.RoomFactory;
+import core.level.Level;
 
 public class Game {
     final static int delay = 20;
     public JFrame frame;
     public Panel panel;
     public Screen screen;
-    public Room room;
+    public Level level;
 
     private Game() {
         frame = new JFrame();
         panel = new Panel(this);
-        room = RoomFactory.createRoom(1);
-        screen = room;
+        level = new Level();
+        screen = level;
         frame.add(panel);
         frame.pack();
         frame.setTitle("Game");

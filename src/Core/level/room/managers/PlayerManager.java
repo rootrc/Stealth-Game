@@ -55,4 +55,12 @@ public class PlayerManager {
             player.setMovement(3, false);
         }
     }
+    
+    public int getX() {
+        return player.getScreenX();
+    }
+
+    public int getY() {
+        return player.getScreenY();
+    }
 }
