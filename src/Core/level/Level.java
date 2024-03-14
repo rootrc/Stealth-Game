@@ -11,19 +11,24 @@ import core.level.room.RoomFactory;
 
 public class Level extends Screen {
     private Room room;
+    private Stopwatch stopwatch;
 
     public Level () {
         room = RoomFactory.createRoom(1);
+        stopwatch = new Stopwatch();
+       
     }
 
     public void render(Graphics2D g2d) {
         g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, 1000, 1000);
+        g2d.fillRect(0, 0, 1024, 768);
         room.draw(g2d);
+        stopwatch.draw(g2d);
     }
 
     public void process() {
         room.process();
+        stopwatch.process();
     }
 
     public void keyPressed(KeyEvent e) {

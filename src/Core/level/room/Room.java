@@ -43,10 +43,9 @@ public class Room {
         entities.draw(g);
         player.draw(g);
 
-        g2d.drawImage(image, 400 - player.getX(), 400 - player.getY(), null);
+        g2d.drawImage(image, 512 - player.getX(), 300 - player.getY(), null);
         g2d.setColor(Color.white);
         drawFPS(g2d);
-        g2d.dispose();
     }
 
     private long lastTime;
@@ -54,7 +53,7 @@ public class Room {
 
     private void drawFPS(Graphics2D g2d) {
         fps = -Math.round(1000000000.0 / (lastTime - (lastTime = System.nanoTime())));
-        g2d.drawString(String.valueOf(fps), 760, 10);
+        g2d.drawString(String.valueOf(fps), 1024-40, 10);
     }
 
     public void process() {

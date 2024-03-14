@@ -24,7 +24,7 @@ public class Game {
         frame.pack();
         frame.setTitle("Game");
         frame.setBackground(Color.black);
-        frame.setSize(800, 800);
+        frame.setSize(1024, 768);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
